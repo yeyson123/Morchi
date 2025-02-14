@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            padding: 50px;
+            overflow: hidden;
+        }
+        .message {
+            font-size: 24px;
+            color: white;
+            margin-top: 20px;
+            display: none;
+            white-space: pre-line;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 20px;
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+        }
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .heart-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px auto;
+        }
+        .heart-container img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 0 10px white;
+            transition: transform 0.3s;
+        }
+        .heart-container img:hover {
+            transform: scale(1.2);
+        }
+        .heart-float {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: float 4s infinite linear;
+        }
+        @keyframes float {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+        .final-message {
+            font-size: 28px;
+            color: yellow;
+            font-weight: bold;
+            margin-top: 30px;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hola, mi amor ❤️</h1>
+    <p class="heart">💖</p>
+    <button onclick="mostrarMensaje();">Ver mensaje</button>
+    <p class="message" id="mensaje"></p>
+    <p class="final-message" id="finalMensaje">Siempre juntos mi niña bonita 💛</p>
+    
+    <audio autoplay loop>
+        <source src="https://docs.google.com/uc?export=download&id=1FOHOk2cbKfcNYVjdf8Av7veO03HhWIiu" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <div class="heart-container">
+        <img src="https://i.ibb.co/0p3yqp9W/Imagen-de-Whats-App-2025-02-14-a-las-13-29-38-e509d53b.jpg">
+        <img src="https://i.ibb.co/XZbfb391/Imagen-de-Whats-App-2025-02-14-a-las-13-29-38-369cc987.jpg">
+        <img src="https://i.ibb.co/F4BDYXKk/Imagen-de-Whats-App-2025-02-14-a-las-13-29-39-5b462181.jpg">
+        <img src="https://i.ibb.co/35SkLqTW/Imagen-de-Whats-App-2025-02-14-a-las-13-29-56-76cca7a5.jpg">
+    </div>
+    
+    <script>
+        function mostrarMensaje() {
+            let mensaje = "Eres lo mejor que me ha pasado, Morchi. Te amo con todo mi corazón. ❤️\n\n" +
+                          "Hoy no estaremos juntos pero sabes que te amo mucho y me gusta mucho estar contigo mi morchi dica dica " +
+                          "pero más dico ese potito. La amo mucho mi morchi. ❤️";
+            
+            let mensajeElemento = document.getElementById("mensaje");
+            mensajeElemento.style.display = "block";
+            mensajeElemento.innerHTML = "";
+            let i = 0;
+            function escribirTexto() {
+                if (i < mensaje.length) {
+                    mensajeElemento.innerHTML += mensaje.charAt(i);
+                    i++;
+                    setTimeout(escribirTexto, 50);
+                } else {
+                    document.getElementById("finalMensaje").style.opacity = 1;
+                }
+            }
+            escribirTexto();
+        }
+        
+        function crearCorazones() {
+            for (let i = 0; i < 15; i++) {
+                let corazon = document.createElement("div");
+                corazon.innerHTML = "❤️";
+                corazon.classList.add("heart-float");
+                corazon.style.left = Math.random() * 100 + "vw";
+                corazon.style.animationDuration = (Math.random() * 2 + 2) + "s";
+                document.body.appendChild(corazon);
+                setTimeout(() => corazon.remove(), 4000);
+            }
+        }
+        setInterval(crearCorazones, 1000);
+    </script>
+</body>
+</html>
